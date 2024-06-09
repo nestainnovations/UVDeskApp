@@ -33,7 +33,7 @@ class DashboardTicketList {
   final List<Type> type;
   final Source? source;
 
-   DashboardTicketList({
+  DashboardTicketList({
     required this.tickets,
     this.pagination,
     this.userDetails,
@@ -70,8 +70,8 @@ class Tickets {
   final Priority? priority;
   @JsonKey(defaultValue: '')
   final String formatedCreatedAt;
-  @JsonKey(defaultValue: '')
-  final String totalThreads;
+  @JsonKey(defaultValue: 0) // Changed to int
+  final int totalThreads; // Changed to int
   final Agent? agent;
   final Customer? customer;
 
@@ -118,8 +118,7 @@ class Status {
     required this.sortOrder,
   });
 
-  factory Status.fromJson(Map<String, dynamic> json) =>
-      _$StatusFromJson(json);
+  factory Status.fromJson(Map<String, dynamic> json) => _$StatusFromJson(json);
 
   Map<String, dynamic> toJson() => _$StatusToJson(this);
 }
@@ -136,8 +135,7 @@ class Group {
     required this.name,
   });
 
-  factory Group.fromJson(Map<String, dynamic> json) =>
-      _$GroupFromJson(json);
+  factory Group.fromJson(Map<String, dynamic> json) => _$GroupFromJson(json);
 
   Map<String, dynamic> toJson() => _$GroupToJson(this);
 }
@@ -175,8 +173,7 @@ class Type {
     required this.name,
   });
 
-  factory Type.fromJson(Map<String, dynamic> json) =>
-      _$TypeFromJson(json);
+  factory Type.fromJson(Map<String, dynamic> json) => _$TypeFromJson(json);
 
   Map<String, dynamic> toJson() => _$TypeToJson(this);
 }
@@ -241,8 +238,7 @@ class Agent {
     required this.isVerified,
   });
 
-  factory Agent.fromJson(Map<String, dynamic> json) =>
-      _$AgentFromJson(json);
+  factory Agent.fromJson(Map<String, dynamic> json) => _$AgentFromJson(json);
 
   Map<String, dynamic> toJson() => _$AgentToJson(this);
 }
@@ -263,6 +259,8 @@ class Customer {
   final String profileImagePath;
   @JsonKey(defaultValue: '')
   final String smallThumbnail;
+  @JsonKey(defaultValue: '')
+  final String contactNumber; // Ensure this is a string
 
   const Customer({
     required this.id,
@@ -272,6 +270,7 @@ class Customer {
     required this.lastName,
     required this.profileImagePath,
     required this.smallThumbnail,
+    required this.contactNumber, // Ensure this is a string
   });
 
   factory Customer.fromJson(Map<String, dynamic> json) =>
@@ -385,8 +384,7 @@ class Agents {
     required this.name,
   });
 
-  factory Agents.fromJson(Map<String, dynamic> json) =>
-      _$AgentsFromJson(json);
+  factory Agents.fromJson(Map<String, dynamic> json) => _$AgentsFromJson(json);
 
   Map<String, dynamic> toJson() => _$AgentsToJson(this);
 }
@@ -403,8 +401,7 @@ class Team {
     required this.name,
   });
 
-  factory Team.fromJson(Map<String, dynamic> json) =>
-      _$TeamFromJson(json);
+  factory Team.fromJson(Map<String, dynamic> json) => _$TeamFromJson(json);
 
   Map<String, dynamic> toJson() => _$TeamToJson(this);
 }
@@ -421,8 +418,7 @@ class Source {
     required this.website,
   });
 
-  factory Source.fromJson(Map<String, dynamic> json) =>
-      _$SourceFromJson(json);
+  factory Source.fromJson(Map<String, dynamic> json) => _$SourceFromJson(json);
 
   Map<String, dynamic> toJson() => _$SourceToJson(this);
 }
