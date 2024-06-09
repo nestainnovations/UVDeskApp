@@ -81,7 +81,7 @@ Tickets _$TicketsFromJson(Map<String, dynamic> json) => Tickets(
           ? null
           : Priority.fromJson(json['priority'] as Map<String, dynamic>),
       formatedCreatedAt: json['formatedCreatedAt'] as String? ?? '',
-      totalThreads: json['totalThreads'] as String? ?? '',
+      totalThreads: json['totalThreads'] as int? ?? 0,
       agent: json['agent'] == null
           ? null
           : Agent.fromJson(json['agent'] as Map<String, dynamic>),
@@ -202,6 +202,7 @@ Customer _$CustomerFromJson(Map<String, dynamic> json) => Customer(
       lastName: json['lastName'] as String? ?? '',
       profileImagePath: json['profileImagePath'] as String? ?? '',
       smallThumbnail: json['smallThumbnail'] as String? ?? '',
+      contactNumber: json['contactNumber'] as String? ?? '', // Add this line
     );
 
 Map<String, dynamic> _$CustomerToJson(Customer instance) => <String, dynamic>{
@@ -212,6 +213,7 @@ Map<String, dynamic> _$CustomerToJson(Customer instance) => <String, dynamic>{
       'lastName': instance.lastName,
       'profileImagePath': instance.profileImagePath,
       'smallThumbnail': instance.smallThumbnail,
+      'contactNumber': instance.contactNumber, // Add this line
     };
 
 Pagination _$PaginationFromJson(Map<String, dynamic> json) => Pagination(
